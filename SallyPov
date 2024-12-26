@@ -1,0 +1,31 @@
+-- Created by Indexell --
+game["Run Service"].RenderStepped:Connect(function()
+    if workspace:FindFirstChild("SallyMoving") then
+        local head = workspace.SallyMoving:WaitForChild("Head")
+        head.Transparency = 1
+        for _, d in pairs(head:GetDescendants()) do
+            if d:IsA("BasePart") then
+                d.Transparency = 1
+            elseif d:IsA("Highlight") then
+                d.Enabled = false
+            end
+        end
+        workspace.CurrentCamera.CFrame = head.CFrame
+    end
+    
+    if workspace:FindFirstChild("Repentance") then
+        if workspace.Repentance:FindFirstChild("Sally") then
+            local salli = workspace.Repentance.Sally.SallyRig
+            local head = salli:WaitForChild("Head")
+            head.Transparency = 1
+            for _, d in pairs(head:GetDescendants()) do
+                if d:IsA("BasePart") then
+                    d.Transparency = 1
+                elseif d:IsA("Highlight") then
+                    d.Enabled = false
+                end
+            end
+            workspace.CurrentCamera.CFrame = head.CFrame
+        end
+    end
+end)
